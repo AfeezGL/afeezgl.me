@@ -3,6 +3,13 @@ import ProjectCard, { ProjectProps } from '@/components/ProjectCard';
 
 const projects: ProjectProps[] = [
     {
+        name: 'Sphera app',
+        tech: 'React, TypeScript, TailwindCSS, NestJS',
+        description:
+            'Sphera is a social-first virtual football manager game where bold fans become bold managers. In Sphera, you own your club, call the shots, and face off against real people in nonstop competition.',
+        liveUrl: 'https://app.sphera.gg',
+    },
+    {
         name: 'Integraflow website',
         tech: 'NextJS, TypeScript, TailwindCSS',
         description:
@@ -20,7 +27,6 @@ const projects: ProjectProps[] = [
         name: 'Integraflow dashboard',
         tech: 'React, TypeScript, TailwindCSS, Apollo',
         sourceCode: 'https://github.com/IntegraflowHQ/integraflow/tree/main/apps/frontend',
-        liveUrl: 'https://app.useintegraflow.com',
     },
     {
         name: 'Integraflow backend',
