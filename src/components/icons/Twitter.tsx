@@ -12,6 +12,7 @@ export const Twitter = (props: SVGProps<SVGSVGElement>) => {
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'
+            aria-hidden='true'
             className='text-white'
             {...props}
         >

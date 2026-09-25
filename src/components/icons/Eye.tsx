@@ -12,6 +12,7 @@ export const Eye = (props: SVGProps<SVGSVGElement>) => {
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'
+            aria-hidden='true'
             {...props}
         >
             <path d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z' />

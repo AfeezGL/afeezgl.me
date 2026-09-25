@@ -17,14 +17,14 @@ const links = [
 
 export default function Profile() {
     return (
-        <section className='flex-1 flex flex-col gap-8 p-8 lg:sticky lg:top-0 lg:bottom-0 lg:h-screen lg:justify-between xl:py-20 xl:pl-20 xl:pr-0'>
-            <section className='space-y-8'>
-                <header className='space-y-4'>
+        <header className='flex-1 flex flex-col gap-8 p-8 lg:sticky lg:top-0 lg:h-screen lg:justify-between xl:py-20 xl:pl-20 xl:pr-0'>
+            <div className='space-y-8'>
+                <div className='space-y-4'>
                     <h1 className='text-white text-5xl font-bold leading-tight xl:text-[64px] xl:leading-none'>
                         Afeez Lawal
                     </h1>
                     <p className='text-white text-2xl leading-tight font-semibold'>Software Engineer</p>
-                </header>
+                </div>
 
                 <p className='text-primary leading-loose text-sm xl:max-w-[634px]'>
                     Results-driven Software Engineer with a strong background in{' '}
@@ -35,15 +35,15 @@ export default function Profile() {
                     <span className='text-white'>high-quality solutions</span> that drive productivity and{' '}
                     <span className='text-white'>user satisfaction</span>.
                 </p>
-            </section>
+            </div>
 
             <div className='flex gap-4 items-center'>
-                <Image src={'/gbolahan.jpg'} width={48} height={48} alt='Afeez Lawal' className='rounded-full' />
+                <Image src={'/gbolahan.jpg'} width={48} height={48} alt='Afeez Lawal' className='rounded-full' priority />
 
                 {links.map((link) => (
                     <SocialLink {...link} key={link.name} />
                 ))}
             </div>
-        </section>
+        </header>
     );
 }

@@ -15,13 +15,13 @@ const projects: ProjectProps[] = [
         description:
             'Integraflow is a cutting-edge platform that specialises in in-product micro-surveys for SaaS and digital products.',
         sourceCode: 'https://github.com/IntegraflowHQ/website',
-        liveUrl: 'https://www.useintegraflow.com/',
     },
     {
         name: 'Integraflow web SDK',
         tech: 'Preact, TypeScript, TailwindCSS, WebPack, Rollup, Babel',
         sourceCode: 'https://github.com/IntegraflowHQ/integraflow',
         liveUrl: 'https://www.npmjs.com/package/integraflow-js',
+        liveLabel: 'npm',
     },
     {
         name: 'Integraflow dashboard',
@@ -52,8 +52,6 @@ const projects: ProjectProps[] = [
         tech: 'React Native, Firebase',
         description: 'A simple app for documenting your targets and achievements.',
         sourceCode: 'https://github.com/AfeezGL/BucketListFirebaseNative',
-        liveUrl:
-            'https://firebasestorage.googleapis.com/v0/b/afeezgl.appspot.com/o/bucketlist.apk?alt=media&token=f4a0b0be-8523-48b2-9c3a-6778678ef0fa',
     },
     {
         name: 'QuickStream',
@@ -66,14 +64,27 @@ const projects: ProjectProps[] = [
 
 export default function Home() {
     return (
-        <main className='flex min-h-screen overflow-x-hidden max-w-(--breakpoint-2xl) mx-auto flex-col lg:flex-row'>
+        <div className='flex min-h-screen max-w-(--breakpoint-2xl) mx-auto flex-col lg:flex-row'>
             <Profile />
 
-            <section className='flex-1 flex flex-col gap-3 group px-8 lg:right-0 lg:max-h-screen lg:max-w-[600px] lg:px-0 lg:pt-8 lg:pr-8 xl:pt-20 xl:pr-20 overflow-x-visible'>
-                {projects.map((project) => (
-                    <ProjectCard key={project.name} {...project} />
-                ))}
-            </section>
-        </main>
+            <div className='flex-1 flex flex-col gap-8 px-8 pb-12 lg:max-w-[600px] lg:px-0 lg:pt-8 lg:pr-8 xl:pt-20 xl:pr-20'>
+                <main>
+                    <section aria-labelledby='projects-heading'>
+                        <h2 id='projects-heading' className='sr-only'>
+                            Projects
+                        </h2>
+                        <ul className='flex flex-col gap-3'>
+                            {projects.map((project) => (
+                                <li key={project.name}>
+                                    <ProjectCard {...project} />
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                </main>
+
+                <footer className='text-primary text-sm'>© {new Date().getFullYear()} Afeez Lawal</footer>
+            </div>
+        </div>
     );
 }

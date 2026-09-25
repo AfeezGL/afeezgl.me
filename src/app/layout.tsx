@@ -1,15 +1,42 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { site } from '@/lib/site';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Afeez Lawal - Software engineer',
-    description:
-        'Results-driven Software Engineer with a strong background in frontend development and a passion for creating exceptional user experiences. Proficient in TypeScript, React, NextJS, Preact, and CSS, with a track record of designing and implementing innovative web applications. Adept at collaborating with cross-functional teams to deliver high-quality solutions that drive productivity and user satisfaction.',
-    keywords:
-        'Software engineer, frontend developer, backend developer, fullstack developer, Software, Frontend, Backend, Fullstack, Full-stack, Engineer',
+    metadataBase: new URL(site.url),
+    title: site.title,
+    description: site.description,
+    alternates: { canonical: '/' },
+    openGraph: {
+        type: 'profile',
+        url: '/',
+        siteName: site.name,
+        title: site.title,
+        description: site.description,
+        locale: 'en_US',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: site.title,
+        description: site.description,
+    },
+};
+
+const personJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: site.name,
+    jobTitle: site.jobTitle,
+    url: site.url,
+    sameAs: [site.linkedin, site.github],
+    worksFor: [
+        { '@type': 'Organization', name: 'SomaEdge LLC' },
+        { '@type': 'Organization', name: 'Sphera Gaming Studios', url: 'https://app.sphera.gg' },
+    ],
+    address: { '@type': 'PostalAddress', addressLocality: 'Lagos', addressCountry: 'NG' },
 };
 
 export default function RootLayout({
@@ -19,7 +46,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={`${inter.className} bg-bg`}>{children}</body>
+            <body className={`${inter.className} bg-bg`}>
+                {children}
+                <script
+                    type='application/ld+json'
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
+                />
+            </body>
         </html>
     );
 }
