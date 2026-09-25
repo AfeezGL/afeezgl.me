@@ -66,7 +66,7 @@ const projects: ProjectProps[] = [
 
 export default function Home() {
     return (
-        <main className='flex min-h-screen overflow-x-hidden max-w-screen-2xl mx-auto flex-col lg:flex-row'>
+        <main className='flex min-h-screen overflow-x-hidden max-w-(--breakpoint-2xl) mx-auto flex-col lg:flex-row'>
             <Profile />
 
             <section className='flex-1 flex flex-col gap-3 group px-8 lg:right-0 lg:max-h-screen lg:max-w-[600px] lg:px-0 lg:pt-8 lg:pr-8 xl:pt-20 xl:pr-20 overflow-x-visible'>
