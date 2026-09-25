@@ -35,11 +35,6 @@
     --color-highlight: #a7e3d6; /* payoff words on ink */
     --color-card-warm: #ffe0be;
 
-    /* legacy tokens for the pre-redesign page; removed in the rebuild */
-    --color-bg: #151515;
-    --color-card: #202022;
-    --color-primary: #949495;
-
     --radius-card: 14px;
     --container-page: 1200px;
     --container-prose: 720px;
@@ -84,6 +79,17 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-line);
+    }
+
+    /* One visible focus style for every control; lighter on ink bands */
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+    }
+
+    .bg-ink :focus-visible,
+    .bg-ink-2 :focus-visible {
+        outline-color: var(--color-highlight);
     }
 }
 

@@ -49,7 +49,7 @@ export default function RootLayout({
                 <link rel='preconnect' href='https://cdn.fontshare.com' crossOrigin='anonymous' />
                 <link rel='stylesheet' href={clashStylesheet} />
             </head>
-            <body className='bg-bg'>
+            <body>
                 {children}
                 <script
                     type='application/ld+json'
