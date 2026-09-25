@@ -1,25 +1,102 @@
 @import 'tailwindcss';
 
+/*
+  Design tokens, adapted from the Diné design language with a teal accent
+  in place of Diné's red, terracotta and gold. Accents live in one place,
+  so the hue can be swapped here.
+
+  Contrast (WCAG): text-muted on paper 4.9:1, accent on paper 5.2:1,
+  white on accent 6.1:1, highlight on ink 13:1. text-faint on paper is
+  2.8:1, so use it for decoration only, never for text.
+*/
 @theme {
-  --color-bg: #151515;
-  --color-card: #202022;
-  --color-primary: #949495;
+    /* surfaces */
+    --color-paper: #f5ece0;
+    --color-paper-light: #fef0d3;
+    --color-paper-hover: #fde8c4;
+    --color-track: #eddfcd;
+    --color-track-rim: #fff9f1;
+    --color-line: #dfcfba;
+    --color-ink: #111111;
+    --color-ink-2: #1b1b1a;
+
+    /* text */
+    --color-text: #323332;
+    --color-text-muted: #6b655e;
+    --color-text-faint: #8e8e8e;
+    --color-text-on-dark: #fff4dd;
+    --color-text-on-dark-muted: #a39e96;
+
+    /* accents */
+    --color-accent: #0f6e66; /* primary CTA, payoff words on paper */
+    --color-accent-hover: #0b5953;
+    --color-accent-2: #11756c; /* eyebrows, colour bands */
+    --color-accent-soft: #0f6e66; /* secondary button text, focus rings */
+    --color-highlight: #a7e3d6; /* payoff words on ink */
+    --color-card-warm: #ffe0be;
+
+    /* legacy tokens for the pre-redesign page; removed in the rebuild */
+    --color-bg: #151515;
+    --color-card: #202022;
+    --color-primary: #949495;
+
+    --radius-card: 14px;
+    --container-page: 1200px;
+    --container-prose: 720px;
+    --tracking-eyebrow: 0.14em;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* next/font sets --font-outfit on <html>, so resolve it at use time.
+   Clash Display comes from the Fontshare stylesheet linked in layout.tsx. */
+@theme inline {
+    --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Clash Display', var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Paper grain from SVG noise, in place of Diné's texture PNGs */
+@utility bg-grain {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .35 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+}
+
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-paper font-sans text-text antialiased;
+    }
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-line);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

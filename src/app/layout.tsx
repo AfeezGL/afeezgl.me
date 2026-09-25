@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { site } from '@/lib/site';
+import { clashStylesheet, outfit } from './fonts';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     metadataBase: new URL(site.url),
@@ -45,8 +43,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'>
-            <body className={`${inter.className} bg-bg`}>
+        <html lang='en' className={outfit.variable}>
+            <head>
+                <link rel='preconnect' href='https://api.fontshare.com' />
+                <link rel='preconnect' href='https://cdn.fontshare.com' crossOrigin='anonymous' />
+                <link rel='stylesheet' href={clashStylesheet} />
+            </head>
+            <body className='bg-bg'>
                 {children}
                 <script
                     type='application/ld+json'
