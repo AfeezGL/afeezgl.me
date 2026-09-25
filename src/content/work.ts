@@ -61,7 +61,7 @@ export const experience: Role[] = [
         dates: 'Jan 2021 – Mar 2022',
         location: 'Lagos, Nigeria',
         points: [
-            'Built and maintained a fantasy football web app with Vue.js, Node.js and Express, used by 1,000+ monthly active users. Integrated payment gateways and real-time match data feeds.',
+            'Built and maintained a fantasy football web app with React, Node.js and Express, used by 1,000+ monthly active users. Integrated payment gateways and real-time match data feeds.',
         ],
     },
 ];

@@ -38,7 +38,7 @@ export function About() {
                             Before that I was a senior engineer at Integraflow, an open-source in-product survey
                             platform. I led the survey dashboard (Next.js, Apollo GraphQL, Zustand) and built the Web SDK
                             in Preact and TypeScript, which is published on npm. Earlier I built Django apps and APIs at
-                            Kophy Technologies, and a fantasy football web app with Vue.js and Node.js at Draftansy.
+                            Kophy Technologies, and a fantasy football web app with React and Node.js at Draftansy.
                         </p>
                         <p>
                             I like work that sits close to users but needs solid engineering underneath: SDKs, real-time
