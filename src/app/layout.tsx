@@ -47,7 +47,16 @@ export default function RootLayout({
             <head>
                 <link rel='preconnect' href='https://api.fontshare.com' />
                 <link rel='preconnect' href='https://cdn.fontshare.com' crossOrigin='anonymous' />
-                <link rel='stylesheet' href={clashStylesheet} />
+                <link rel='preload' as='style' href={clashStylesheet} />
+                {/* Attach the font stylesheet from script so it doesn't block the first paint */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href=${JSON.stringify(clashStylesheet)};document.head.appendChild(l)})()`,
+                    }}
+                />
+                <noscript>
+                    <link rel='stylesheet' href={clashStylesheet} />
+                </noscript>
             </head>
             <body>
                 {children}

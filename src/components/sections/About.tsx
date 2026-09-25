@@ -20,8 +20,8 @@ export function About() {
                         id='about-heading'
                         tone='paper'
                         eyebrow='About'
-                        setup='Close to users.'
-                        payoff='Solid underneath.'
+                        setup='Frontend and backend,'
+                        payoff='for over five years.'
                         className='mb-8 md:mb-10'
                     />
                     <div className='max-w-prose space-y-5 text-[17px] font-light leading-[1.8] text-text'>

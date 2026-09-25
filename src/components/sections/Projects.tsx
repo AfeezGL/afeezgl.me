@@ -22,8 +22,8 @@ export function Projects() {
                 id='projects-heading'
                 tone='paper'
                 eyebrow='Selected projects'
-                setup='Products I work on.'
-                payoff='And my part in each.'
+                setup='Four products,'
+                payoff='and what I did on each.'
             />
 
             <ul className='grid gap-5 md:grid-cols-2'>

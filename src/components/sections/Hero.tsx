@@ -38,11 +38,11 @@ export function Hero() {
                     <ContactActions />
                 </div>
 
-                <dl className='mx-auto mt-16 grid max-w-[1000px] grid-cols-2 gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 text-left md:mt-20 md:grid-cols-4'>
+                <dl className='mx-auto mt-16 grid max-w-[1000px] grid-cols-2 gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 text-left md:mt-20 lg:grid-cols-4'>
                     {stats.map((stat) => (
                         <div key={stat.label} className='flex flex-col-reverse justify-end gap-2 bg-ink p-5 md:p-6'>
                             <dt className='text-sm font-light leading-[1.4] text-text-on-dark-muted'>{stat.label}</dt>
-                            <dd className='font-display text-[28px] font-semibold leading-none text-white md:text-[36px]'>
+                            <dd className='font-display text-[28px] font-semibold leading-none text-white lg:text-[36px]'>
                                 {stat.value}
                             </dd>
                         </div>
