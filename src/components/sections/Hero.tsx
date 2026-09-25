@@ -1,7 +1,5 @@
-import { Download, MapPin } from 'lucide-react';
-import { GitHubIcon, LinkedInIcon } from '@/components/ui/BrandIcons';
-import { PillLink } from '@/components/ui/PillLink';
-import { site } from '@/lib/site';
+import { MapPin } from 'lucide-react';
+import { ContactActions } from '@/components/ui/ContactActions';
 
 const stats = [
     { value: '5+', label: 'years building for the web' },
@@ -36,24 +34,8 @@ export function Hero() {
                     SomaEdge I build the ordering and admin apps for Diné, an AI waiter for restaurants and events.
                 </p>
 
-                <div className='mt-9 flex flex-wrap items-center justify-center gap-3'>
-                    <PillLink href={site.linkedin} external>
-                        <LinkedInIcon className='size-4' />
-                        Connect on LinkedIn
-                    </PillLink>
-                    <PillLink href={site.resume} download variant='secondary'>
-                        <Download className='size-4' aria-hidden='true' />
-                        Download Resume
-                    </PillLink>
-                    <a
-                        href={site.github}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='flex size-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:bg-white/10'
-                    >
-                        <GitHubIcon className='size-5' />
-                        <span className='sr-only'>GitHub profile (opens in new tab)</span>
-                    </a>
+                <div className='mt-9'>
+                    <ContactActions />
                 </div>
 
                 <dl className='mx-auto mt-16 grid max-w-[1000px] grid-cols-2 gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 text-left md:mt-20 md:grid-cols-4'>

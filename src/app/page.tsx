@@ -1,8 +1,11 @@
 import { About } from '@/components/sections/About';
+import { Contact } from '@/components/sections/Contact';
+import { Credentials } from '@/components/sections/Credentials';
 import { Experience } from '@/components/sections/Experience';
 import { Header } from '@/components/sections/Header';
 import { Hero } from '@/components/sections/Hero';
 import { Projects } from '@/components/sections/Projects';
+import { Skills } from '@/components/sections/Skills';
 
 export default function Home() {
     return (
@@ -19,7 +22,10 @@ export default function Home() {
                 <About />
                 <Experience />
                 <Projects />
+                <Skills />
+                <Credentials />
             </main>
+            <Contact />
         </>
     );
 }

@@ -8,13 +8,14 @@ type Props = {
     setup: string;
     payoff: string;
     lead?: string;
+    align?: 'left' | 'center';
     className?: string;
 };
 
 // Two-tone heading: a setup line, then the payoff line in the accent colour.
-export function SectionHeading({ id, tone, eyebrow, setup, payoff, lead, className }: Props) {
+export function SectionHeading({ id, tone, eyebrow, setup, payoff, lead, align = 'left', className }: Props) {
     return (
-        <div className={cn('mb-10 max-w-[800px] md:mb-14', className)}>
+        <div className={cn('mb-10 max-w-[800px] md:mb-14', align === 'center' && 'mx-auto text-center', className)}>
             <p
                 className={cn(
                     'text-[11px] uppercase tracking-eyebrow',
@@ -36,6 +37,7 @@ export function SectionHeading({ id, tone, eyebrow, setup, payoff, lead, classNa
                 <p
                     className={cn(
                         'mt-5 max-w-[560px] text-sm font-light leading-[1.6] md:text-base',
+                        align === 'center' && 'mx-auto',
                         tone === 'ink' ? 'text-text-on-dark' : 'text-text-muted'
                     )}
                 >
