@@ -10,10 +10,22 @@ type Props = {
     lead?: string;
     align?: 'left' | 'center';
     className?: string;
+    /** Overrides the h2 size, e.g. for a heading in a narrow column. */
+    titleClassName?: string;
 };
 
 // Two-tone heading: a setup line, then the payoff line in the accent colour.
-export function SectionHeading({ id, tone, eyebrow, setup, payoff, lead, align = 'left', className }: Props) {
+export function SectionHeading({
+    id,
+    tone,
+    eyebrow,
+    setup,
+    payoff,
+    lead,
+    align = 'left',
+    className,
+    titleClassName,
+}: Props) {
     return (
         <div className={cn('mb-10 max-w-[800px] md:mb-14', align === 'center' && 'mx-auto text-center', className)}>
             <p
@@ -28,7 +40,8 @@ export function SectionHeading({ id, tone, eyebrow, setup, payoff, lead, align =
                 id={id}
                 className={cn(
                     'mt-3 font-display text-[28px] font-semibold leading-[1.1] text-balance md:text-[52px]',
-                    tone === 'ink' ? 'text-white' : 'text-text'
+                    tone === 'ink' ? 'text-white' : 'text-text',
+                    titleClassName
                 )}
             >
                 {setup} <span className={cn('block', tone === 'ink' ? 'text-highlight' : 'text-accent')}>{payoff}</span>

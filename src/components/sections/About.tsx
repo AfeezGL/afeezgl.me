@@ -6,13 +6,13 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 export function About() {
     return (
         <Section id='about' tone='paper' labelledBy='about-heading'>
-            <div className='grid gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16'>
+            <div className='grid gap-10 xl:grid-cols-[minmax(0,320px)_1fr] xl:gap-16'>
                 <Image
                     src={portrait}
                     alt='Portrait of Afeez Lawal'
                     placeholder='blur'
-                    sizes='(min-width: 768px) 320px, 240px'
-                    className='aspect-[4/5] w-full max-w-[240px] rounded-card border border-line object-cover md:max-w-none'
+                    sizes='(min-width: 1280px) 320px, 240px'
+                    className='aspect-[4/5] w-full max-w-[240px] rounded-card border border-line object-cover xl:max-w-none'
                 />
 
                 <div>
@@ -23,6 +23,7 @@ export function About() {
                         setup='Frontend and backend,'
                         payoff='for over five years.'
                         className='mb-8 md:mb-10'
+                        titleClassName='md:text-[40px] xl:text-[52px]'
                     />
                     <div className='max-w-prose space-y-5 text-[17px] font-light leading-[1.8] text-text'>
                         <p>I&apos;ve been building for the web for more than five years, mostly in TypeScript.</p>
