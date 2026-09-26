@@ -41,6 +41,22 @@
     --tracking-eyebrow: 0.14em;
 }
 
+/*
+  Motion tokens. Every animation runs once, moves only opacity and
+  transform, and ends fully visible, so the reduced-motion rule at the
+  bottom can collapse it to its end state. Static, so the variables are
+  always emitted for the CSS and the count-up script to read.
+*/
+@theme static {
+    --ease-motion: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-duration: 600ms;
+    --motion-duration-short: 200ms;
+    --motion-duration-long: 1200ms; /* hero glow, stat count-up */
+    --motion-distance: 12px;
+    --motion-stagger: 70ms;
+    --motion-stagger-hero: 90ms;
+}
+
 /* next/font sets --font-outfit on <html>, so resolve it at use time.
    Clash Display comes from the Fontshare stylesheet linked in layout.tsx. */
 @theme inline {
@@ -61,6 +77,41 @@
         pointer-events: none;
         opacity: 0.35;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .35 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(var(--motion-distance));
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* Hero entrance, CSS-only so it plays without JavaScript. Order it with [--step:N]. */
+@utility hero-step {
+    animation: rise var(--motion-duration) var(--ease-motion) both;
+    animation-delay: calc(var(--step, 0) * var(--motion-stagger-hero));
+}
+
+/* The teal glow behind the hero, on its own layer so it can fade in */
+@utility hero-glow {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(15, 110, 102, 0.35), transparent);
+        animation: fade-in var(--motion-duration-long) var(--ease-motion) both;
     }
 }
 
@@ -102,7 +153,9 @@
     ::before,
     ::after {
         animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
     }
 }

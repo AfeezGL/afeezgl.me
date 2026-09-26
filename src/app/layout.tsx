@@ -43,8 +43,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en' className={outfit.variable}>
+        // The inline script adds a `js` class before hydration, hence suppressHydrationWarning
+        <html lang='en' className={outfit.variable} suppressHydrationWarning>
             <head>
+                {/* Scroll reveals start hidden only under `js`, so nothing is hidden without JavaScript */}
+                <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js')` }} />
                 <link rel='preconnect' href='https://api.fontshare.com' />
                 <link rel='preconnect' href='https://cdn.fontshare.com' crossOrigin='anonymous' />
                 <link rel='preload' as='style' href={clashStylesheet} />
