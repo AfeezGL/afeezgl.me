@@ -121,6 +121,34 @@
     }
 }
 
+/* Scroll reveals (components/ui/Reveal.tsx). Hidden only under the root `js`
+   class and without reduced motion; Reveal sets data-revealed once in view. */
+[data-reveal] {
+    transition-property: opacity, transform;
+    transition-duration: var(--motion-duration);
+    transition-timing-function: var(--ease-motion);
+    transition-delay: calc(var(--reveal-delay, 0) * var(--motion-stagger));
+}
+
+[data-reveal='draw'] {
+    transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal]:not([data-revealed]) {
+        opacity: 0;
+        transform: translateY(var(--motion-distance));
+    }
+
+    .js [data-reveal='pop']:not([data-revealed]) {
+        transform: scale(0.8);
+    }
+
+    .js [data-reveal='draw']:not([data-revealed]) {
+        transform: scaleY(0);
+    }
+}
+
 /* Until CountUp hydrates and resets to 0, hide the server-rendered final figure so it doesn't flash */
 @media (prefers-reduced-motion: no-preference) {
     .js [data-count-up=''] {

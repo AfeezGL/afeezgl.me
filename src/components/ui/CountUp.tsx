@@ -34,8 +34,9 @@ export function CountUp({ value }: Props) {
         let cancelled = false;
         const count = () => {
             if (cancelled) return;
-            const start = performance.now();
+            let start: number | undefined;
             const tick = (now: number) => {
+                start ??= now;
                 const t = Math.min((now - start) / duration, 1);
                 setDisplay(t < 1 ? format(target * easeOut(t)) : value);
                 if (t < 1) frame = requestAnimationFrame(tick);
