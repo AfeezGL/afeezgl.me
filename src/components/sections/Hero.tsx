@@ -1,10 +1,11 @@
 import { MapPin } from 'lucide-react';
 import { ContactActions } from '@/components/ui/ContactActions';
+import { CountUp } from '@/components/ui/CountUp';
 
 const stats = [
     { value: '5+', label: 'years building for the web' },
-    { value: '20,000+', label: 'matches completed on Sphera' },
-    { value: '1,000+', label: 'monthly active users at Draftansy' },
+    { value: '20,000+', label: 'matches completed on Sphera', countUp: true },
+    { value: '1,000+', label: 'monthly active users at Draftansy', countUp: true },
     { value: 'Remote', label: 'contract with SomaEdge, Dallas, TX' },
 ];
 
@@ -44,7 +45,7 @@ export function Hero() {
                         <div key={stat.label} className='flex flex-col-reverse justify-end gap-2 bg-ink p-5 md:p-6'>
                             <dt className='text-sm font-light leading-[1.4] text-text-on-dark-muted'>{stat.label}</dt>
                             <dd className='font-display text-[28px] font-semibold leading-none text-white lg:text-[36px]'>
-                                {stat.value}
+                                {'countUp' in stat ? <CountUp value={stat.value} /> : stat.value}
                             </dd>
                         </div>
                     ))}

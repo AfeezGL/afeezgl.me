@@ -93,10 +93,13 @@
     }
 }
 
-/* Hero entrance, CSS-only so it plays without JavaScript. Order it with [--step:N]. */
+/* Hero entrance, CSS-only so it plays without JavaScript. Order it with [--step:N].
+   Declared only without reduced motion, so it can't paint even one hidden frame. */
 @utility hero-step {
-    animation: rise var(--motion-duration) var(--ease-motion) both;
-    animation-delay: calc(var(--step, 0) * var(--motion-stagger-hero));
+    @media (prefers-reduced-motion: no-preference) {
+        animation: rise var(--motion-duration) var(--ease-motion) both;
+        animation-delay: calc(var(--step, 0) * var(--motion-stagger-hero));
+    }
 }
 
 /* The teal glow behind the hero, on its own layer so it can fade in */
@@ -111,7 +114,17 @@
         z-index: -1;
         pointer-events: none;
         background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(15, 110, 102, 0.35), transparent);
-        animation: fade-in var(--motion-duration-long) var(--ease-motion) both;
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: fade-in var(--motion-duration-long) var(--ease-motion) both;
+        }
+    }
+}
+
+/* Until CountUp hydrates and resets to 0, hide the server-rendered final figure so it doesn't flash */
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-count-up=''] {
+        opacity: 0;
     }
 }
 
