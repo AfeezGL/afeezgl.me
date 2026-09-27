@@ -3,7 +3,7 @@ import { ContactActions } from '@/components/ui/ContactActions';
 import { CountUp } from '@/components/ui/CountUp';
 
 const stats = [
-    { value: '5+', label: 'years building for the web' },
+    { value: '4+', label: 'years building for the web' },
     { value: '20,000+', label: 'matches completed on Sphera', countUp: true },
 ];
 

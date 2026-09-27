@@ -1,6 +1,6 @@
 // Wording follows resumes/Afeez Lawal - Resume - Full-Stack.md. House rules for this copy:
 // - Sphera: "one of the founding engineers"; "helped move Sphera from prototype to v2".
-// - Numbers: only 20,000+ matches, 1,000+ MAU, and SDK deploy time roughly halved.
+// - Numbers: only 20,000+ matches and SDK deploy time roughly halved.
 // - The SDK's queueing/batching/retry detail appears once on the site (the SDK project).
 
 import type { StaticImageData } from 'next/image';
@@ -57,15 +57,6 @@ export const experience: Role[] = [
         points: [
             'Built Spektre Task, a bilingual English and German project management app for a door manufacturer, with Django and JavaScript, including its REST APIs, authentication and employee work-hours system.',
             'Built GraphQL APIs with Django and Graphene for a comments feature on Omnidots, a vibration and air quality monitoring platform, in a team of 7 engineers.',
-        ],
-    },
-    {
-        company: 'Draftansy Football',
-        title: 'Software Engineer',
-        dates: 'Jan 2021 – Mar 2022',
-        location: 'Lagos, Nigeria',
-        points: [
-            'Built and maintained a fantasy football web app with React, Node.js and Express, used by 1,000+ monthly active users. Integrated payment gateways and real-time match data feeds.',
         ],
     },
 ];
