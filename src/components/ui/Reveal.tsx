@@ -4,7 +4,7 @@ import { useEffect, useRef, type CSSProperties, type HTMLAttributes } from 'reac
 
 type Props = HTMLAttributes<HTMLElement> & {
     /** Renders as this element, so a list item or heading line needs no extra wrapper. */
-    as?: 'div' | 'li' | 'p' | 'span';
+    as?: 'div' | 'h3' | 'li' | 'p' | 'span';
     /** Delay in stagger steps. Pass an item's index to stagger a group. */
     delay?: number;
     /** rise: fade up (default). pop: fade in from a smaller scale. draw: grow down from the top edge. */
