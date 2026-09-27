@@ -19,7 +19,7 @@ export function Contact() {
                     />
                     <ContactActions />
                     <p className='mt-6 text-center text-sm text-text-on-dark-muted'>
-                        <a href={`mailto:${site.email}`} className='transition-colors hover:text-white'>
+                        <a href={`mailto:${site.email}`} className='group transition-colors hover:text-white'>
                             <span className='link-underline'>{site.email}</span>
                         </a>
                     </p>
