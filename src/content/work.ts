@@ -110,8 +110,8 @@ export const projects: Project[] = [
         name: 'Integraflow Web SDK',
         context: 'Integraflow · 2023 – 2024',
         summary:
-            "Built the SDK that showed surveys inside customers' products and published it on npm as integraflow-js. It queues and batches responses and retries failed requests, so responses aren't lost on flaky connections.",
-        stack: ['Preact', 'TypeScript', 'Tailwind CSS', 'Rollup', 'Webpack'],
+            "Built the SDK that showed surveys inside customers' products, first as @integraflow/web and then rewritten as integraflow-js with Rollup, and published both on npm. It queues and batches responses and retries failed requests, so responses aren't lost on flaky connections.",
+        stack: ['Preact', 'TypeScript', 'Tailwind CSS', 'Rollup'],
         links: [
             { href: 'https://github.com/IntegraflowHQ/integraflow', label: 'Source code' },
             { href: 'https://www.npmjs.com/package/integraflow-js', label: 'npm package' },

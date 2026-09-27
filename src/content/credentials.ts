@@ -9,11 +9,11 @@ export const skills = [
     },
     {
         group: 'Backend',
-        items: ['Node.js', 'NestJS', 'Express', 'Django', 'Graphene', 'GraphQL', 'REST APIs', 'WebSockets', 'OpenAPI'],
+        items: ['Node.js', 'NestJS', 'Express', 'Django', 'GraphQL', 'REST APIs', 'WebSockets'],
     },
     {
         group: 'Tooling and mobile',
-        items: ['Docker', 'Git', 'Linux', 'Webpack', 'Rollup', 'Vitest', 'MSW', 'npm publishing', 'React Native'],
+        items: ['Docker', 'Git', 'Linux', 'Vitest', 'React Native'],
     },
 ] as const;
 
@@ -21,6 +21,5 @@ export const skills = [
 export const credentials = [
     { date: 'Aug 2026', name: 'IBM Build RAG Applications: Get Started Certificate' },
     { date: 'Oct 2025', name: 'IBM Develop Generative AI Applications: Get Started Certification' },
-    { date: 'Jan 2022', name: 'Front End Development Libraries Developer Certification' },
     { date: 'Jul 2023', name: 'B.Tech, Urban and Regional Planning', detail: 'Federal University of Technology, Akure' },
 ] as const;
