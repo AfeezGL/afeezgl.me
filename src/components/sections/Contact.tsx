@@ -1,5 +1,6 @@
 import { ContactActions } from '@/components/ui/ContactActions';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { site } from '@/lib/site';
 
 export function Contact() {
     return (
@@ -13,10 +14,15 @@ export function Contact() {
                         eyebrow='Contact'
                         setup='Hiring for a full-stack role?'
                         payoff="Let's talk."
-                        lead="I'm in Lagos, Nigeria, and open to remote roles and relocation. LinkedIn is the quickest way to reach me."
+                        lead="I'm in Lagos, Nigeria, and open to remote roles and relocation. Email is the best way to reach me."
                         className='mb-9 md:mb-10'
                     />
                     <ContactActions />
+                    <p className='mt-6 text-center text-sm text-text-on-dark-muted'>
+                        <a href={`mailto:${site.email}`} className='transition-colors hover:text-white'>
+                            <span className='link-underline'>{site.email}</span>
+                        </a>
+                    </p>
                 </section>
 
                 <div className='mt-20 flex flex-col items-center justify-between gap-3 border-t border-white/10 py-8 text-xs text-text-on-dark-muted sm:flex-row md:mt-28'>
