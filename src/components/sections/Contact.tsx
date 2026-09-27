@@ -4,7 +4,7 @@ import { site } from '@/lib/site';
 
 export function Contact() {
     return (
-        <footer id='contact' className='scroll-mt-4 bg-ink px-5 pt-20 text-text-on-dark md:px-20 md:pt-28'>
+        <footer id='contact' className='scroll-mt-20 bg-ink px-5 pt-20 text-text-on-dark md:px-20 md:pt-28'>
             <div className='mx-auto max-w-page'>
                 <section aria-labelledby='contact-heading'>
                     <SectionHeading

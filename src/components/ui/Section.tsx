@@ -17,7 +17,7 @@ export function Section({ id, tone, labelledBy, className, children }: Props) {
             id={id}
             aria-labelledby={labelledBy}
             className={cn(
-                'scroll-mt-4 px-5 md:px-20',
+                'scroll-mt-20 px-5 md:px-20',
                 tone === 'ink' ? 'bg-ink py-20 text-text-on-dark md:py-28' : 'bg-paper bg-grain py-16 text-text md:py-24',
                 className
             )}

@@ -1,6 +1,6 @@
 'use client';
 
-import { Download, Menu, X } from 'lucide-react';
+import { Download, Mail, Menu, X } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { PillLink } from '@/components/ui/PillLink';
 import { site } from '@/lib/site';
@@ -57,10 +57,16 @@ export function MobileMenu({ links }: Props) {
                         </li>
                     ))}
                 </ul>
-                <PillLink href={site.resume} download className='mt-6 w-full'>
-                    <Download className='size-4' aria-hidden='true' />
-                    Download Resume
-                </PillLink>
+                <div className='mt-6 flex flex-col gap-3'>
+                    <PillLink href={`mailto:${site.email}`} onClick={() => setOpen(false)}>
+                        <Mail className='size-4' aria-hidden='true' />
+                        Email me
+                    </PillLink>
+                    <PillLink href={site.resume} download variant='secondary'>
+                        <Download className='size-4' aria-hidden='true' />
+                        Download Resume
+                    </PillLink>
+                </div>
             </nav>
         </div>
     );

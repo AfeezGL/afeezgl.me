@@ -102,6 +102,23 @@
     }
 }
 
+/* Sticky header (Header.tsx): slides down into place when it becomes the bar
+   after the hero. Declared only without reduced motion, so there it just appears. */
+@keyframes drop-in {
+    from {
+        opacity: 0;
+        transform: translateY(calc(-1 * var(--motion-distance)));
+    }
+}
+
+@utility sticky-bar {
+    @media (prefers-reduced-motion: no-preference) {
+        &[data-stuck] {
+            animation: drop-in var(--motion-duration-short) var(--ease-motion) both;
+        }
+    }
+}
+
 /* The teal glow behind the hero, on its own layer so it can fade in */
 @utility hero-glow {
     position: relative;
