@@ -5,8 +5,6 @@ import { CountUp } from '@/components/ui/CountUp';
 const stats = [
     { value: '5+', label: 'years building for the web' },
     { value: '20,000+', label: 'matches completed on Sphera', countUp: true },
-    { value: '1,000+', label: 'monthly active users at Draftansy', countUp: true },
-    { value: 'Remote', label: 'contract with SomaEdge, Dallas, TX' },
 ];
 
 export function Hero() {
@@ -31,20 +29,19 @@ export function Hero() {
                 </h1>
 
                 <p className='hero-step mx-auto mt-6 max-w-[620px] [--step:3] text-base font-light leading-[1.5] text-text-on-dark md:text-lg'>
-                    I build web products end to end, mostly in TypeScript: React and Next.js on the frontend, Node.js
-                    (NestJS, Express) and Django on the backend. I&apos;m one of the founding engineers at Sphera, and at
-                    SomaEdge I build the ordering and admin apps for Diné, an AI waiter for restaurants and events.
+                    I build web products end to end in TypeScript, React and Node.js. I&apos;m one of the founding
+                    engineers at Sphera, and at SomaEdge I build the apps restaurants use for Diné, an AI waiter.
                 </p>
 
                 <div className='hero-step mt-9 [--step:4]'>
                     <ContactActions />
                 </div>
 
-                <dl className='hero-step mx-auto mt-16 grid [--step:5] max-w-[1000px] grid-cols-2 gap-px overflow-hidden rounded-card border border-white/10 bg-white/10 text-left md:mt-20 lg:grid-cols-4'>
+                <dl className='hero-step mx-auto mt-14 flex [--step:5] justify-center gap-8 md:mt-16 md:gap-20'>
                     {stats.map((stat) => (
-                        <div key={stat.label} className='flex flex-col-reverse justify-end gap-2 bg-ink p-5 md:p-6'>
-                            <dt className='text-sm font-light leading-[1.4] text-text-on-dark-muted'>{stat.label}</dt>
-                            <dd className='font-display text-[28px] font-semibold leading-none text-white lg:text-[36px]'>
+                        <div key={stat.label} className='flex flex-col-reverse gap-2'>
+                            <dt className='text-sm font-light leading-[1.4] text-balance text-text-on-dark-muted'>{stat.label}</dt>
+                            <dd className='font-display text-[36px] font-semibold leading-none text-white md:text-[56px]'>
                                 {'countUp' in stat ? <CountUp value={stat.value} /> : stat.value}
                             </dd>
                         </div>

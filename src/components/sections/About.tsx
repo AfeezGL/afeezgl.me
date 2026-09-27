@@ -23,30 +23,25 @@ export function About() {
                         id='about-heading'
                         tone='paper'
                         eyebrow='About'
-                        setup='Frontend and backend,'
-                        payoff='for over five years.'
+                        setup='I build things end to end,'
+                        payoff='with design and product.'
                         className='mb-8 md:mb-10'
                         titleClassName='md:text-[40px] xl:text-[52px]'
                     />
                     <Reveal delay={3} className='max-w-prose space-y-5 text-[17px] font-light leading-[1.8] text-text'>
-                        <p>I&apos;ve been building for the web for more than five years, mostly in TypeScript.</p>
                         <p>
-                            At Sphera, a football manager game that runs as a mobile-first PWA, I&apos;m one of the
-                            founding engineers. I work across the React frontend and the NestJS backend, helped move the
-                            game from prototype to v2 with a new match engine and a redesigned UI, and built the push
-                            notifications. Players have completed more than 20,000 matches. At SomaEdge I build the guest
-                            ordering app, the kitchen display and the admin console for Diné, including real-time chat
-                            with an AI waiter over WebSockets.
+                            I like owning a feature end to end, from the interface down to the API behind it. I always
+                            work closely with the designers and product people along the way, not just the other
+                            engineers.
                         </p>
                         <p>
-                            Before that I was a senior engineer at Integraflow, an open-source in-product survey
-                            platform. I led the survey dashboard (Next.js, Apollo GraphQL, Zustand) and built the Web SDK
-                            in Preact and TypeScript, which is published on npm. Earlier I built Django apps and APIs at
-                            Kophy Technologies, and a fantasy football web app with React and Node.js at Draftansy.
+                            What I care about most is building tools that help people. So far that&apos;s meant AI
+                            products, games and developer SDKs, and I&apos;m glad to keep working on that kind of
+                            software.
                         </p>
                         <p>
-                            I like work that sits close to users but needs solid engineering underneath: SDKs, real-time
-                            features, and APIs other people build on.
+                            Outside work it&apos;s football. It&apos;s what I look forward to watching every weekend,
+                            which is a big part of why I enjoy working on Sphera, a football manager game.
                         </p>
                     </Reveal>
                 </div>
