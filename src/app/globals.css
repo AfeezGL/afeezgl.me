@@ -1,3 +1,303 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/*
+  Design tokens, adapted from the Diné design language with a teal accent
+  in place of Diné's red, terracotta and gold. Accents live in one place,
+  so the hue can be swapped here.
+
+  Contrast (WCAG): text-muted on paper 4.9:1, accent on paper 5.2:1,
+  white on accent 6.1:1, highlight on ink 13:1. text-faint on paper is
+  2.8:1, so use it for decoration only, never for text.
+*/
+@theme {
+    /* surfaces */
+    --color-paper: #f5ece0;
+    --color-paper-light: #fef0d3;
+    --color-paper-hover: #fde8c4;
+    --color-track: #eddfcd;
+    --color-track-rim: #fff9f1;
+    --color-line: #dfcfba;
+    --color-ink: #111111;
+    --color-ink-2: #1b1b1a;
+
+    /* text */
+    --color-text: #323332;
+    --color-text-muted: #6b655e;
+    --color-text-faint: #8e8e8e;
+    --color-text-on-dark: #fff4dd;
+    --color-text-on-dark-muted: #a39e96;
+
+    /* accents */
+    --color-accent: #0f6e66; /* primary CTA, payoff words on paper */
+    --color-accent-hover: #0b5953;
+    --color-accent-2: #11756c; /* eyebrows, colour bands */
+    --color-accent-soft: #0f6e66; /* secondary button text, focus rings */
+    --color-highlight: #a7e3d6; /* payoff words on ink */
+    --color-card-warm: #ffe0be;
+
+    --radius-card: 14px;
+    --container-page: 1200px;
+    --container-prose: 720px;
+    --tracking-eyebrow: 0.14em;
+}
+
+/*
+  Motion tokens. Every animation runs once, moves only opacity and
+  transform, and ends fully visible, so the reduced-motion rule at the
+  bottom can collapse it to its end state. Static, so the variables are
+  always emitted for the CSS and the count-up script to read.
+*/
+@theme static {
+    --ease-motion: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-duration: 600ms;
+    --motion-duration-short: 200ms;
+    --motion-duration-long: 1200ms; /* hero glow, stat count-up */
+    --motion-distance: 12px;
+    --motion-stagger: 70ms;
+    --motion-stagger-hero: 90ms;
+}
+
+/* next/font sets --font-outfit on <html>, so resolve it at use time.
+   Clash Display comes from the Fontshare stylesheet linked in layout.tsx. */
+@theme inline {
+    --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Clash Display', var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Paper grain from SVG noise, in place of Diné's texture PNGs */
+@utility bg-grain {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .45 0 0 0 0 .35 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(var(--motion-distance));
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* Hero entrance, CSS-only so it plays without JavaScript. Order it with [--step:N].
+   Declared only without reduced motion, so it can't paint even one hidden frame. */
+@utility hero-step {
+    @media (prefers-reduced-motion: no-preference) {
+        animation: rise var(--motion-duration) var(--ease-motion) both;
+        animation-delay: calc(var(--step, 0) * var(--motion-stagger-hero));
+    }
+}
+
+/* The teal glow behind the hero, on its own layer so it can fade in */
+@utility hero-glow {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(15, 110, 102, 0.35), transparent);
+
+        @media (prefers-reduced-motion: no-preference) {
+            animation: fade-in var(--motion-duration-long) var(--ease-motion) both;
+        }
+    }
+}
+
+/*
+  Hover feedback. Hover styles sit behind (hover: hover) so taps on touch
+  screens don't leave them stuck, and keyboard focus gets the same cues.
+  Anything that moves stays still under reduced motion.
+*/
+
+/* Project card: lifts and draws a teal line across its top edge */
+@utility card-lift {
+    position: relative;
+    overflow: hidden;
+    transition: translate var(--motion-duration-short) var(--ease-motion),
+        box-shadow var(--motion-duration-short) var(--ease-motion);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0 0 auto;
+        height: 2px;
+        background: var(--color-accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--motion-duration-short) var(--ease-motion);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            box-shadow: 0 18px 40px -28px rgba(17, 17, 17, 0.35);
+        }
+
+        &:hover::before {
+            transform: scaleX(1);
+        }
+    }
+
+    &:has(:focus-visible) {
+        box-shadow: 0 18px 40px -28px rgba(17, 17, 17, 0.35);
+    }
+
+    &:has(:focus-visible)::before {
+        transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        @media (hover: hover) {
+            &:hover {
+                translate: 0 -3px;
+            }
+        }
+
+        &:has(:focus-visible) {
+            translate: 0 -3px;
+        }
+    }
+}
+
+/* Text link: an underline grows in from the left. Put it on the link, or on
+   its label inside a `group` link so the underline skips icons and padding. */
+@utility link-underline {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 -3px;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--motion-duration-short) var(--ease-motion);
+    }
+
+    @media (hover: hover) {
+        &:hover::after,
+        .group:hover &::after {
+            transform: scaleX(1);
+        }
+    }
+
+    &:focus-visible::after,
+    .group:focus-visible &::after {
+        transform: scaleX(1);
+    }
+}
+
+/* External-link arrow: nudges up and right when its `group` link is hovered or focused */
+@utility link-nudge {
+    transition: translate var(--motion-duration-short) var(--ease-motion);
+
+    @media (prefers-reduced-motion: no-preference) {
+        @media (hover: hover) {
+            .group:hover & {
+                translate: 2px -2px;
+            }
+        }
+
+        .group:focus-visible & {
+            translate: 2px -2px;
+        }
+    }
+}
+
+/* Scroll reveals (components/ui/Reveal.tsx). Hidden only under the root `js`
+   class and without reduced motion; Reveal sets data-revealed once in view. */
+[data-reveal] {
+    transition-property: opacity, transform;
+    transition-duration: var(--motion-duration);
+    transition-timing-function: var(--ease-motion);
+    transition-delay: calc(var(--reveal-delay, 0) * var(--motion-stagger));
+}
+
+[data-reveal='draw'] {
+    transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal]:not([data-revealed]) {
+        opacity: 0;
+        transform: translateY(var(--motion-distance));
+    }
+
+    .js [data-reveal='pop']:not([data-revealed]) {
+        transform: scale(0.8);
+    }
+
+    .js [data-reveal='draw']:not([data-revealed]) {
+        transform: scaleY(0);
+    }
+}
+
+/* Until CountUp hydrates and resets to 0, hide the server-rendered final figure so it doesn't flash */
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-count-up=''] {
+        opacity: 0;
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-paper font-sans text-text antialiased;
+    }
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-line);
+    }
+
+    /* One visible focus style for every control; lighter on ink bands */
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+    }
+
+    .bg-ink :focus-visible,
+    .bg-ink-2 :focus-visible {
+        outline-color: var(--color-highlight);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+}
