@@ -19,7 +19,11 @@ export function CountUp({ value }: Props) {
     useEffect(() => {
         const el = ref.current;
         const match = /^([\d,]+)(.*)$/.exec(value);
-        if (!el || !match || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!el || !match || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Nothing to count: show the figure as is (the CSS hides it until ready)
+            setReady(true);
+            return;
+        }
 
         const target = Number(match[1].replace(/,/g, ''));
         const suffix = match[2];
