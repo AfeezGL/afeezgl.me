@@ -21,8 +21,8 @@ export function Contact() {
 
                 <div className='mt-20 flex flex-col items-center justify-between gap-3 border-t border-white/10 py-8 text-xs text-text-on-dark-muted sm:flex-row md:mt-28'>
                     <p>© {new Date().getFullYear()} Afeez Lawal</p>
-                    <a href='#top' className='py-2 transition-colors hover:text-white'>
-                        Back to top
+                    <a href='#top' className='group py-2 transition-colors hover:text-white'>
+                        <span className='link-underline'>Back to top</span>
                     </a>
                 </div>
             </div>

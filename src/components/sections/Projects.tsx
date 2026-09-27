@@ -30,7 +30,7 @@ export function Projects() {
             <ul className='grid gap-5 md:grid-cols-2'>
                 {projects.map((project, index) => (
                     <Reveal as='li' key={project.name} delay={index} className='flex'>
-                        <article className='flex flex-1 flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-[0_18px_40px_-28px_rgba(17,17,17,0.35)] md:p-8'>
+                        <article className='card-lift flex flex-1 flex-col rounded-card border border-line bg-white p-6 md:p-8'>
                             <p className='text-[11px] uppercase tracking-eyebrow text-accent-2'>{project.context}</p>
                             <h3 className='mt-2.5 font-display text-[20px] font-semibold leading-[1.25] text-text md:text-[24px]'>
                                 {project.name}
