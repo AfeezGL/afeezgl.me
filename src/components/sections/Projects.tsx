@@ -1,4 +1,5 @@
 import { ExternalTextLink } from '@/components/ui/ExternalTextLink';
+import { Reveal } from '@/components/ui/Reveal';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { earlierProjects, projects } from '@/content/work';
@@ -27,8 +28,8 @@ export function Projects() {
             />
 
             <ul className='grid gap-5 md:grid-cols-2'>
-                {projects.map((project) => (
-                    <li key={project.name} className='flex'>
+                {projects.map((project, index) => (
+                    <Reveal as='li' key={project.name} delay={index} className='flex'>
                         <article className='flex flex-1 flex-col rounded-card border border-line bg-white p-6 transition-shadow hover:shadow-[0_18px_40px_-28px_rgba(17,17,17,0.35)] md:p-8'>
                             <p className='text-[11px] uppercase tracking-eyebrow text-accent-2'>{project.context}</p>
                             <h3 className='mt-2.5 font-display text-[20px] font-semibold leading-[1.25] text-text md:text-[24px]'>
@@ -46,7 +47,7 @@ export function Projects() {
                                 ))}
                             </div>
                         </article>
-                    </li>
+                    </Reveal>
                 ))}
             </ul>
 
@@ -55,9 +56,11 @@ export function Projects() {
                     Earlier side projects
                 </h3>
                 <ul className='mt-5 divide-y divide-line border-y border-line'>
-                    {earlierProjects.map((project) => (
-                        <li
+                    {earlierProjects.map((project, index) => (
+                        <Reveal
+                            as='li'
                             key={project.name}
+                            delay={index}
                             className='grid gap-2 py-5 md:grid-cols-[180px_1fr_auto] md:items-center md:gap-6'
                         >
                             <h4 className='font-display text-[17px] font-semibold text-text'>{project.name}</h4>
@@ -70,7 +73,7 @@ export function Projects() {
                                     <ExternalTextLink key={link.href} {...link} context={project.name} />
                                 ))}
                             </div>
-                        </li>
+                        </Reveal>
                     ))}
                 </ul>
             </div>

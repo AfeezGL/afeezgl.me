@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import portrait from '@/assets/afeez-lawal.jpg';
+import { Reveal } from '@/components/ui/Reveal';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -7,13 +8,15 @@ export function About() {
     return (
         <Section id='about' tone='paper' labelledBy='about-heading'>
             <div className='grid gap-10 xl:grid-cols-[minmax(0,320px)_1fr] xl:gap-16'>
-                <Image
-                    src={portrait}
-                    alt='Portrait of Afeez Lawal'
-                    placeholder='blur'
-                    sizes='(min-width: 1280px) 320px, 240px'
-                    className='aspect-[4/5] w-full max-w-[240px] rounded-card border border-line object-cover xl:max-w-none'
-                />
+                <Reveal>
+                    <Image
+                        src={portrait}
+                        alt='Portrait of Afeez Lawal'
+                        placeholder='blur'
+                        sizes='(min-width: 1280px) 320px, 240px'
+                        className='aspect-[4/5] w-full max-w-[240px] rounded-card border border-line object-cover xl:max-w-none'
+                    />
+                </Reveal>
 
                 <div>
                     <SectionHeading
@@ -25,7 +28,7 @@ export function About() {
                         className='mb-8 md:mb-10'
                         titleClassName='md:text-[40px] xl:text-[52px]'
                     />
-                    <div className='max-w-prose space-y-5 text-[17px] font-light leading-[1.8] text-text'>
+                    <Reveal delay={3} className='max-w-prose space-y-5 text-[17px] font-light leading-[1.8] text-text'>
                         <p>I&apos;ve been building for the web for more than five years, mostly in TypeScript.</p>
                         <p>
                             At Sphera, a football manager game that runs as a mobile-first PWA, I&apos;m one of the
@@ -45,7 +48,7 @@ export function About() {
                             I like work that sits close to users but needs solid engineering underneath: SDKs, real-time
                             features, and APIs other people build on.
                         </p>
-                    </div>
+                    </Reveal>
                 </div>
             </div>
         </Section>
