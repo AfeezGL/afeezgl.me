@@ -51,11 +51,16 @@ export function CountUp({ value }: Props) {
             ([entry]) => {
                 if (!entry.isIntersecting) return;
                 observer.disconnect();
-                // Let the hero entrance finish fading the row in, so the count is seen from the start
-                const entrances = document
-                    .getAnimations()
-                    .filter((a) => a.effect instanceof KeyframeEffect && a.effect.target?.contains(el));
-                Promise.all(entrances.map((a) => a.finished)).then(count, count);
+                // Start as the hero entrance begins fading the row in, not while it's still waiting its turn
+                const wait = Math.max(
+                    0,
+                    ...document.getAnimations().map((a) => {
+                        if (!(a.effect instanceof KeyframeEffect) || !a.effect.target?.contains(el)) return 0;
+                        const { delay = 0, localTime } = a.effect.getComputedTiming();
+                        return delay - Number(localTime ?? 0);
+                    })
+                );
+                setTimeout(count, wait);
             },
             { threshold: 0.6 }
         );
