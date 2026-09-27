@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import { ExternalTextLink } from '@/components/ui/ExternalTextLink';
 import { Reveal } from '@/components/ui/Reveal';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { earlierProjects, projects } from '@/content/work';
+import { earlierProjects, projects, type ProjectImages } from '@/content/work';
 
 function StackTags({ stack }: { stack: string[] }) {
     return (
@@ -13,6 +14,44 @@ function StackTags({ stack }: { stack: string[] }) {
                 </li>
             ))}
         </ul>
+    );
+}
+
+// Fixed aspect ratios on the panel and images, so nothing shifts as they load
+function ImagePanel({ images }: { images: ProjectImages }) {
+    if (images.kind === 'browser') {
+        const [image] = images.items;
+        return (
+            <div className='mb-6 overflow-hidden rounded-[10px] border border-line bg-track'>
+                <div className='flex h-6 items-center gap-1.5 px-3'>
+                    {[0, 1, 2].map((dot) => (
+                        <span key={dot} className='size-2 rounded-full bg-line' />
+                    ))}
+                </div>
+                <Image
+                    src={image.src}
+                    alt={image.alt}
+                    placeholder='blur'
+                    sizes='(min-width: 1280px) 530px, (min-width: 768px) 45vw, 90vw'
+                    className='aspect-[16/10] w-full object-cover'
+                />
+            </div>
+        );
+    }
+
+    return (
+        <div className='mb-6 flex aspect-[4/3] min-w-0 justify-center gap-4 rounded-[10px] bg-track p-5 md:aspect-[16/10]'>
+            {images.items.slice(0, 2).map((image, index) => (
+                <Image
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    placeholder='blur'
+                    sizes='(min-width: 768px) 160px, 100px'
+                    className='aspect-[9/19.5] h-full w-auto rounded-[16px] object-cover'
+                />
+            ))}
+        </div>
     );
 }
 
@@ -31,6 +70,9 @@ export function Projects() {
                 {projects.map((project, index) => (
                     <Reveal as='li' key={project.name} delay={index} className='flex'>
                         <article className='card-lift flex flex-1 flex-col rounded-card border border-line bg-white p-6 md:p-8'>
+                            {project.images && project.images.items.length > 0 && (
+                                <ImagePanel images={project.images} />
+                            )}
                             <p className='text-[11px] uppercase tracking-eyebrow text-accent-2'>{project.context}</p>
                             <h3 className='mt-2.5 font-display text-[20px] font-semibold leading-[1.25] text-text md:text-[24px]'>
                                 {project.name}

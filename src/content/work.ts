@@ -3,6 +3,10 @@
 // - Numbers: only 20,000+ matches, 1,000+ MAU, and SDK deploy time roughly halved.
 // - The SDK's queueing/batching/retry detail appears once on the site (the SDK project).
 
+import type { StaticImageData } from 'next/image';
+import placeholderBrowser from '@/assets/placeholder-browser.png';
+import placeholderPhone from '@/assets/placeholder-phone.png';
+
 export type Role = {
     company: string;
     title: string;
@@ -68,12 +72,19 @@ export const experience: Role[] = [
 
 export type ProjectLink = { href: string; label: string };
 
+// phone: up to two portrait screenshots side by side. browser: one landscape screenshot.
+export type ProjectImages = {
+    kind: 'phone' | 'browser';
+    items: { src: StaticImageData; alt: string }[];
+};
+
 export type Project = {
     name: string;
     context: string;
     summary: string;
     stack: string[];
     links: ProjectLink[];
+    images?: ProjectImages;
 };
 
 export const projects: Project[] = [
@@ -84,6 +95,14 @@ export const projects: Project[] = [
             'Diné is an AI waiter and seat-ordering product for restaurants and events. Guests scan a QR code at their seat, chat with the AI waiter and order from their phone. I built the guest ordering app, the kitchen display, the admin console, and the Diné and SomaEdge marketing sites. The chat reconnects on its own and queues messages, so orders still go through on weak venue Wi-Fi.',
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'WebSockets', 'Next.js'],
         links: [{ href: 'https://getdine.ai', label: 'Live site' }],
+        // TODO: replace with real screenshot
+        images: {
+            kind: 'phone',
+            items: [
+                { src: placeholderPhone, alt: '' },
+                { src: placeholderPhone, alt: '' },
+            ],
+        },
     },
     {
         name: 'Sphera',
@@ -92,6 +111,14 @@ export const projects: Project[] = [
             "Sphera is a football manager game that runs as a mobile-first PWA. I'm one of the founding engineers. I work across the React and TypeScript frontend and the NestJS and Express backend, helped move Sphera from prototype to v2 (new match engine, redesigned UI), and built the push notifications for match updates. Players have completed more than 20,000 matches.",
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Express', 'PWA'],
         links: [{ href: 'https://app.sphera.gg', label: 'Live app' }],
+        // TODO: replace with real screenshot
+        images: {
+            kind: 'phone',
+            items: [
+                { src: placeholderPhone, alt: '' },
+                { src: placeholderPhone, alt: '' },
+            ],
+        },
     },
     {
         name: 'Integraflow dashboard and survey studio',
@@ -105,6 +132,8 @@ export const projects: Project[] = [
                 label: 'Source code',
             },
         ],
+        // TODO: replace with real screenshot
+        images: { kind: 'browser', items: [{ src: placeholderBrowser, alt: '' }] },
     },
     {
         name: 'Integraflow Web SDK',
