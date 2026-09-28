@@ -46,6 +46,9 @@ export default async function OpengraphImage() {
                     <div style={{ fontSize: 64, fontWeight: 600, lineHeight: 1.1, color: accent, marginTop: 12 }}>
                         {`${site.jobTitle}.`}
                     </div>
+                    <div style={{ fontSize: 30, letterSpacing: 4, textTransform: 'uppercase', color: accent, marginTop: 20 }}>
+                        {site.specialty}
+                    </div>
                 </div>
                 <div
                     style={{

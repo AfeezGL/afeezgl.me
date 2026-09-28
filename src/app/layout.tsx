@@ -27,7 +27,7 @@ const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: site.name,
-    jobTitle: site.jobTitle,
+    jobTitle: `${site.jobTitle} (${site.specialty})`,
     url: site.url,
     sameAs: [site.linkedin, site.github],
     worksFor: [

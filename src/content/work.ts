@@ -19,7 +19,7 @@ export type Role = {
 export const experience: Role[] = [
     {
         company: 'SomaEdge LLC',
-        title: 'Software Engineer',
+        title: 'Senior Software Engineer',
         dates: 'Feb 2025 – Present',
         location: 'Contract · Remote (Dallas, TX)',
         points: [
@@ -32,7 +32,7 @@ export const experience: Role[] = [
         company: 'Sphera Gaming Studios',
         title: 'Founding Engineer',
         dates: 'Dec 2024 – Present',
-        location: 'Lagos, Nigeria',
+        location: 'Remote (Lagos, Nigeria)',
         points: [
             'One of the founding engineers of Sphera, a mobile-first PWA football manager game. Players have completed 20,000+ matches across friendly, league and cup competitions.',
             'Work across the React and TypeScript frontend and the NestJS and Express backend and its REST APIs.',
@@ -43,7 +43,7 @@ export const experience: Role[] = [
         company: 'Integraflow',
         title: 'Senior Software Engineer',
         dates: 'May 2023 – Dec 2024',
-        location: 'Lagos, Nigeria',
+        location: 'Remote (Lagos, Nigeria)',
         points: [
             'Led development of the survey management dashboard in React, Next.js, Zustand and Apollo GraphQL, running on a Django backend.',
             'Built the Integraflow Web SDK in Preact and TypeScript and published it on npm.',
@@ -53,8 +53,8 @@ export const experience: Role[] = [
     {
         company: 'Kophy Technologies',
         title: 'Software Engineer',
-        dates: 'Apr 2022 – May 2023',
-        location: 'Lagos, Nigeria',
+        dates: 'Jan 2021 – May 2023',
+        location: 'Remote (Lagos, Nigeria)',
         points: [
             'Built Spektre Task, a bilingual English and German project management app for a door manufacturer, with Django and JavaScript, including its REST APIs, authentication and employee work-hours system.',
             'Built GraphQL APIs with Django and Graphene for a comments feature on Omnidots, a vibration and air quality monitoring platform, in a team of 7 engineers.',

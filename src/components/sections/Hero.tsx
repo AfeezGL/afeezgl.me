@@ -3,7 +3,7 @@ import { ContactActions } from '@/components/ui/ContactActions';
 import { CountUp } from '@/components/ui/CountUp';
 
 const stats = [
-    { value: '4+', label: 'years building for the web' },
+    { value: '5+', label: 'years building for the web' },
     { value: '20,000+', label: 'matches completed on Sphera', countUp: true },
 ];
 
@@ -25,7 +25,10 @@ export function Hero() {
                     className='mt-5 font-display text-[40px] font-semibold leading-none text-white md:text-[68px]'
                 >
                     <span className='hero-step block [--step:1]'>Afeez Lawal.</span>{' '}
-                    <span className='hero-step block text-highlight [--step:2] md:mt-1'>Full-Stack Engineer.</span>
+                    <span className='hero-step block text-highlight [--step:2] md:mt-1'>Senior Software Engineer.</span>
+                    <span className='hero-step mt-4 block [--step:2] font-sans text-[11px] font-normal uppercase leading-normal tracking-eyebrow text-highlight md:mt-5 md:text-xs'>
+                        Full-Stack Developer
+                    </span>
                 </h1>
 
                 <p className='hero-step mx-auto mt-6 max-w-[620px] [--step:3] text-base font-light leading-[1.5] text-text-on-dark md:text-lg'>
