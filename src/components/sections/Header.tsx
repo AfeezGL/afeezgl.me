@@ -34,7 +34,7 @@ export function Header() {
     return (
         <header
             data-stuck={stuck || undefined}
-            className='sticky-bar group absolute inset-x-0 top-0 z-30 px-5 pt-5 md:px-20 data-stuck:fixed data-stuck:border-b data-stuck:border-white/10 data-stuck:bg-ink/95 data-stuck:py-3 data-stuck:backdrop-blur-[8px]'
+            className='sticky-bar group/header absolute inset-x-0 top-0 z-30 px-5 pt-5 md:px-20 data-stuck:fixed data-stuck:border-b data-stuck:border-white/10 data-stuck:bg-ink/95 data-stuck:py-3 data-stuck:backdrop-blur-[8px]'
         >
             <div className='relative mx-auto flex max-w-page items-center justify-between'>
                 <a href='#top' className='font-display text-lg font-semibold text-white'>
@@ -43,7 +43,7 @@ export function Header() {
 
                 <nav
                     aria-label='Main'
-                    className='hidden h-10 items-center gap-8 rounded-full border border-white/20 bg-black/30 px-6 backdrop-blur-[8px] group-data-stuck:border-transparent group-data-stuck:bg-transparent group-data-stuck:backdrop-blur-none lg:flex'
+                    className='hidden h-10 items-center gap-8 rounded-full border border-white/20 bg-black/30 px-6 backdrop-blur-[8px] group-data-stuck/header:border-transparent group-data-stuck/header:bg-transparent group-data-stuck/header:backdrop-blur-none lg:flex'
                 >
                     {navLinks.map((link) => (
                         <a
@@ -61,12 +61,12 @@ export function Header() {
                         href={site.resume}
                         download
                         size='sm'
-                        className='hidden lg:inline-flex lg:group-data-stuck:hidden'
+                        className='hidden lg:inline-flex lg:group-data-stuck/header:hidden'
                     >
                         <Download className='size-4' aria-hidden='true' />
                         Resume
                     </PillLink>
-                    <PillLink href={`mailto:${site.email}`} size='sm' className='hidden group-data-stuck:inline-flex'>
+                    <PillLink href={`mailto:${site.email}`} size='sm' className='hidden group-data-stuck/header:inline-flex'>
                         <Mail className='size-4' aria-hidden='true' />
                         Email me
                     </PillLink>
