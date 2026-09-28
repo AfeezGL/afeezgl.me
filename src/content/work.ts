@@ -4,8 +4,9 @@
 // - The SDK's queueing/batching/retry detail appears once on the site (the SDK project).
 
 import type { StaticImageData } from 'next/image';
-import placeholderBrowser from '@/assets/placeholder-browser.png';
-import placeholderPhone from '@/assets/placeholder-phone.png';
+// Screenshots are paused until all of them are ready. Uncomment these and the images fields below to bring them back.
+// import integraflowStudio from '@/assets/integraflow-studio.png';
+// import placeholderPhone from '@/assets/placeholder-phone.png';
 
 export type Role = {
     company: string;
@@ -87,13 +88,13 @@ export const projects: Project[] = [
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'WebSockets', 'Next.js'],
         links: [{ href: 'https://getdine.ai', label: 'Live site' }],
         // TODO: replace with real screenshot
-        images: {
-            kind: 'phone',
-            items: [
-                { src: placeholderPhone, alt: '' },
-                { src: placeholderPhone, alt: '' },
-            ],
-        },
+        // images: {
+        //     kind: 'phone',
+        //     items: [
+        //         { src: placeholderPhone, alt: '' },
+        //         { src: placeholderPhone, alt: '' },
+        //     ],
+        // },
     },
     {
         name: 'Sphera',
@@ -103,13 +104,13 @@ export const projects: Project[] = [
         stack: ['React', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Express', 'PWA'],
         links: [{ href: 'https://app.sphera.gg', label: 'Live app' }],
         // TODO: replace with real screenshot
-        images: {
-            kind: 'phone',
-            items: [
-                { src: placeholderPhone, alt: '' },
-                { src: placeholderPhone, alt: '' },
-            ],
-        },
+        // images: {
+        //     kind: 'phone',
+        //     items: [
+        //         { src: placeholderPhone, alt: '' },
+        //         { src: placeholderPhone, alt: '' },
+        //     ],
+        // },
     },
     {
         name: 'Integraflow dashboard and survey studio',
@@ -123,8 +124,15 @@ export const projects: Project[] = [
                 label: 'Source code',
             },
         ],
-        // TODO: replace with real screenshot
-        images: { kind: 'browser', items: [{ src: placeholderBrowser, alt: '' }] },
+        // images: {
+        //     kind: 'browser',
+        //     items: [
+        //         {
+        //             src: integraflowStudio,
+        //             alt: 'Integraflow survey studio editing a feature survey, with a live desktop preview of the survey widget',
+        //         },
+        //     ],
+        // },
     },
     {
         name: 'Integraflow Web SDK',

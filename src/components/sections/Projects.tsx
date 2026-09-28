@@ -33,7 +33,7 @@ function ImagePanel({ images }: { images: ProjectImages }) {
                     alt={image.alt}
                     placeholder='blur'
                     sizes='(min-width: 1280px) 530px, (min-width: 768px) 45vw, 90vw'
-                    className='aspect-[16/10] w-full object-cover'
+                    className='aspect-[16/9] w-full object-cover object-top'
                 />
             </div>
         );
